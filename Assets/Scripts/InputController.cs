@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -5,6 +7,8 @@ public class InputController : MonoBehaviour
 {
     [SerializeField]
     private float rotationSpeed;
+    [SerializeField]
+    private GameObject ammunition;
 
     private Rigidbody2D rigidBody;
 
@@ -32,5 +36,24 @@ public class InputController : MonoBehaviour
             -Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime);
 
         rigidBody.AddForce(transform.up * Input.GetAxis("Vertical"));
+
+        if (Input.GetMouseButton(0))
+        {
+            FireAmmunition();
+        }
+    }
+
+    private void FireAmmunition()
+    {
+        var position = new Vector3(transform.position.x, transform.position.y, 0f);
+        var ammo = Instantiate(ammunition, position, transform.rotation);
+        // if outofbounds Destroy()
+        // if hit Destroy()
+        StartCoroutine(AmmunitionCooldownCoroutine());
+    }
+
+    private IEnumerator AmmunitionCooldownCoroutine()
+    {
+        yield return new WaitForSeconds(2f);
     }
 }
