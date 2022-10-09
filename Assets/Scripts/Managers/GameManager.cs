@@ -21,6 +21,8 @@ namespace Game.Managers
 
         [SerializeField]
         private int extraAsteroidsPerWave = 0;
+        [SerializeField]
+        private AsteroidsScriptableObject asteroidsSO;
 
         private int asteroidsWave = 0;
 
@@ -47,7 +49,10 @@ namespace Game.Managers
             // destroy existing asteroids; hasPlayerLost
             for (int i = 0; i < asteroidsCount; i++)
             {
-                Instantiate(asteroid,
+                // TODO change size at every wave
+                var randomAsteroid = asteroidsSO.GetRandomAsteroid(AsteroidsScriptableObject.Size.Small);
+                randomAsteroid.AddComponent<AsteroidController>();
+                Instantiate(randomAsteroid,
                     new Vector3(Random.Range(-9.0f, 9.0f), Random.Range(-6.0f, 6.0f), 0),
                     Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
             }
