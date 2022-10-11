@@ -29,27 +29,18 @@ namespace Game.Controllers
 
             if (rotationSpeed == 0)
             {
-                rotationSpeed = 100f;
+                rotationSpeed = 5f;
             }
         }
 
-        private void FixedUpdate()
+        public void MoveShip(Transform joystickThumb)
         {
-            // TODO: change input axis to touch
-            transform.Rotate(
-                0,
-                0,
-                -Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime);
-
-            rigidBody.AddForce(transform.up * Input.GetAxis("Vertical"));
-
-            if (Input.GetMouseButton(0))
-            {
-                FireAmmunition();
-            }
+            var rectTransform = joystickThumb.GetComponent<RectTransform>();
+            transform.Rotate(0, 0, rectTransform.rect.x * rotationSpeed * Time.deltaTime);
+            rigidBody.AddForce(transform.up * rectTransform.rect.y);
         }
 
-        private void FireAmmunition()
+        public void FireAmmunition()
         {
             var position = new Vector3(transform.position.x, transform.position.y, 0f);
             var ammo = Instantiate(ammunation, position, transform.rotation, sceneObjectsTransform);
