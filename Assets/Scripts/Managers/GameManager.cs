@@ -13,17 +13,17 @@ namespace Game.Managers
         }
 
         [SerializeField]
-        private GameObject asteroid;
-        public GameObject Asteroid
-        {
-            get { return asteroid; }
-        }
+        private GameObject sceneObjects;
 
         [SerializeField]
         private int extraAsteroidsPerWave = 0;
         [SerializeField]
         private AsteroidsScriptableObject asteroidsSO;
 
+        [SerializeField]
+        private Transform canvasTransform;
+        public Transform CanvasTransform { get { return canvasTransform; } }
+        
         private int asteroidsWave = 0;
 
         private void Start()
@@ -53,8 +53,10 @@ namespace Game.Managers
                 var randomAsteroid = asteroidsSO.GetRandomAsteroid(AsteroidsScriptableObject.Size.Small);
                 var newAsteroid = Instantiate(randomAsteroid,
                     new Vector3(Random.Range(-9.0f, 9.0f), Random.Range(-6.0f, 6.0f), 0),
-                    Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
+                    Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)),
+                    sceneObjects.transform);
                 newAsteroid.AddComponent<AsteroidController>();
+                newAsteroid.AddComponent<EuclideanTorusController>();
             }
         }
     }
