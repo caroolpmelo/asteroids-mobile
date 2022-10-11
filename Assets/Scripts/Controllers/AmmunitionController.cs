@@ -23,7 +23,7 @@ namespace Game.Controllers
 
             if (autoDestroyTimer == 0)
             {
-                autoDestroyTimer = 400f;
+                autoDestroyTimer = 1f;
             }
         }
 

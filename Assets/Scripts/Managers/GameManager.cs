@@ -14,6 +14,7 @@ namespace Game.Managers
 
         [SerializeField]
         private GameObject sceneObjects;
+        public GameObject SceneObjects { get { return sceneObjects; } }
 
         [SerializeField]
         private int extraAsteroidsPerWave = 0;

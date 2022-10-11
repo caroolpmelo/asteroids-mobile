@@ -256,7 +256,6 @@ MonoBehaviour:
   sceneObjects: {fileID: 258579312}
   extraAsteroidsPerWave: 0
   asteroidsSO: {fileID: 11400000, guid: 018a6ca1f7c22e04fb42ced42dce2038, type: 2}
-  camera: {fileID: 519420031}
   canvasTransform: {fileID: 1816309183}
 --- !u!114 &466296131
 MonoBehaviour:
@@ -553,6 +552,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3870649114945868930, guid: 3d9f56c7d245fac48a257869af2ddda2, type: 3}
+      propertyPath: AutoDestroy
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4196512626324511486, guid: 3d9f56c7d245fac48a257869af2ddda2, type: 3}
       propertyPath: m_Name
       value: Player

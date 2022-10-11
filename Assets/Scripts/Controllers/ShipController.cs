@@ -12,6 +12,7 @@ namespace Game.Controllers
 
         private Rigidbody2D rigidBody;
         private GameObject ammunation;
+        private Transform sceneObjectsTransform;
 
         private void Awake()
         {
@@ -21,7 +22,9 @@ namespace Game.Controllers
         private void Start()
         {
             ammunation = GameManager.Instance.ShipAmmunation;
-            
+            sceneObjectsTransform = GameManager.Instance.SceneObjects.transform;
+
+
             rigidBody.gravityScale = 0;
 
             if (rotationSpeed == 0)
@@ -49,15 +52,14 @@ namespace Game.Controllers
         private void FireAmmunition()
         {
             var position = new Vector3(transform.position.x, transform.position.y, 0f);
-            var ammo = Instantiate(ammunation, position, transform.rotation);
-            // if outofbounds Destroy()
+            var ammo = Instantiate(ammunation, position, transform.rotation, sceneObjectsTransform);
             // if hit Destroy()
             StartCoroutine(AmmunitionCooldownCoroutine());
         }
 
         private IEnumerator AmmunitionCooldownCoroutine()
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
     }
 }
