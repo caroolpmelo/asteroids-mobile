@@ -256,6 +256,7 @@ MonoBehaviour:
   sceneObjects: {fileID: 258579312}
   extraAsteroidsPerWave: 0
   asteroidsSO: {fileID: 11400000, guid: 018a6ca1f7c22e04fb42ced42dce2038, type: 2}
+  camera: {fileID: 519420031}
   canvasTransform: {fileID: 1816309183}
 --- !u!114 &466296131
 MonoBehaviour:
