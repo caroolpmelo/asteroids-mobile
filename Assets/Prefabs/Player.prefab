@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5674228088525232311}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,6 +43,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ship
       objectReference: {fileID: 0}
+    - target: {fileID: 1558453681934022, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018447318374154, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 4516860231943414, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4516860231943414, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4516860231943414, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -61,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4516860231943414, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4516860231943414, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -73,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4516860231943414, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4516860231943414, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -85,11 +93,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4516860231943414, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 4675870831220480, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.36
+      value: 0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675870831220480, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675870831220480, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675870831220480, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4870243695847820, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -97,11 +117,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4870243695847820, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.57
+      value: -0.45
       objectReference: {fileID: 0}
     - target: {fileID: 212792698093779412, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
       propertyPath: m_FlipY
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212946605345201420, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
+      propertyPath: m_FlipX
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212946605345201420, guid: 1a09f406e15243042af8595d756fcfe9, type: 3}
       propertyPath: m_FlipY
@@ -143,6 +167,61 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &4811453588728686745
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8854357987291270392}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.45698926, y: 0.5}
+    oldSize: {x: 1.86, y: 1.44}
+    newSize: {x: 1.86, y: 1.44}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.78999996, y: -0.24}
+      - {x: 0.8577591, y: -0.17551823}
+      - {x: 0.7932775, y: 0.23612046}
+      - {x: 0.73928845, y: 0.16739851}
+      - {x: 0.28738976, y: 0.31581897}
+      - {x: 0.15775907, y: 0.49969882}
+      - {x: 0.057457983, y: 0.5355183}
+      - {x: -0.10103646, y: 0.52745795}
+      - {x: -0.20909667, y: 0.3835785}
+      - {x: -0.2680216, y: 0.29250932}
+      - {x: -0.57456857, y: 0.25962186}
+      - {x: -0.83, y: 0.22}
+      - {x: -0.84999996, y: 0.19999999}
+      - {x: -0.8258193, y: -0.2077591}
+      - {x: -0.7072104, y: -0.08664107}
+      - {x: -0.5868234, y: -0.055941522}
+      - {x: -0.2858552, y: -0.1416927}
+      - {x: -0.1490967, y: -0.37461495}
+      - {x: -0.13, y: -0.58}
+      - {x: 0.13387956, y: -0.5719397}
+      - {x: 0.17327732, y: -0.35969886}
+      - {x: 0.35936132, y: -0.06456518}
+      - {x: 0.6376946, y: -0.04669094}
+      - {x: 0.7411868, y: -0.2118822}
+      - {x: 0.7027144, y: 0.18318313}
+      - {x: 0.75, y: -0.19999999}
+    - - {x: -0.03, y: -0.39999998}
+      - {x: 0.01, y: -0.38}
+      - {x: 0.03, y: -0.39999998}
+      - {x: -0.03, y: -0.45999998}
 --- !u!114 &2054651805941827954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e727cdf2b5a50c4cb03b82b032d8a9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0
   rotationSpeed: 0
 --- !u!114 &3870649114945868930
 MonoBehaviour:
