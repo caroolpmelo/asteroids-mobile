@@ -8,7 +8,13 @@ namespace Game.Controllers
     public class ShipController : MonoBehaviour
     {
         [SerializeField]
+        private float shipSpeed;
+        [SerializeField]
         private float rotationSpeed;
+        [SerializeField]
+        private FixedJoystick joystick;
+
+        private float verticalInput = 0f, horizontalInput = 0f;
 
         private Rigidbody2D rigidBody;
         private GameObject ammunation;
@@ -27,17 +33,49 @@ namespace Game.Controllers
 
             rigidBody.gravityScale = 0;
 
+            if (shipSpeed == 0)
+            {
+                shipSpeed = 5f;
+            }
+
             if (rotationSpeed == 0)
             {
                 rotationSpeed = 5f;
             }
         }
 
-        public void MoveShip(Transform joystickThumb)
+        private void Update()
         {
-            var rectTransform = joystickThumb.GetComponent<RectTransform>();
-            transform.Rotate(0, 0, rectTransform.rect.x * rotationSpeed * Time.deltaTime);
-            rigidBody.AddForce(transform.up * rectTransform.rect.y);
+            MoveShip();
+        }
+
+        private void MoveShip()
+        {
+            if (!joystick)
+            {
+                Debug.LogError("Joystick reference not found!");
+                return;
+            }
+
+            verticalInput = joystick.Vertical;
+            horizontalInput = joystick.Horizontal;
+            if (verticalInput != 0 || horizontalInput != 0)
+            {
+                var direction = new Vector3(horizontalInput, 0, verticalInput);
+                rigidBody.velocity = new Vector3(horizontalInput * shipSpeed, verticalInput * shipSpeed,
+                    rigidBody.velocity.y);
+
+                if (direction != Vector3.zero)
+                {
+                    RotateShip();
+                }
+            }
+        }
+
+        private void RotateShip()
+        {
+            float rotationZ = Mathf.Atan2(verticalInput, horizontalInput) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
         }
 
         public void FireAmmunition()
