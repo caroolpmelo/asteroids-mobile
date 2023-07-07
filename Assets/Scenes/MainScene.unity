@@ -396,8 +396,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 466296132}
-  - component: {fileID: 466296131}
-  - component: {fileID: 466296130}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -405,35 +403,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &466296130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 466296129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ac07a56faa74804e920a26b8f2ae64b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shipAmmunition: {fileID: 2171006346036461463, guid: af3dec190a21ee645915ad1ec0f11b09, type: 3}
-  sceneObjects: {fileID: 258579312}
-  extraAsteroidsPerWave: 0
-  asteroidsSO: {fileID: 11400000, guid: 018a6ca1f7c22e04fb42ced42dce2038, type: 2}
-  canvasTransform: {fileID: 1816309183}
---- !u!114 &466296131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 466296129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0219be68ce9f0cb44a13887f2bf0184b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &466296132
 Transform:
   m_ObjectHideFlags: 0
@@ -445,7 +414,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 732693937}
+  - {fileID: 1198617031}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -541,6 +512,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &732693936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 732693937}
+  - component: {fileID: 732693938}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &732693937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732693936}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 466296132}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &732693938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732693936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0219be68ce9f0cb44a13887f2bf0184b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1197145992 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2054651805941827954, guid: 3d9f56c7d245fac48a257869af2ddda2, type: 3}
@@ -552,6 +567,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e727cdf2b5a50c4cb03b82b032d8a9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1198617030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1198617031}
+  - component: {fileID: 1198617032}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1198617031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198617030}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.1469738, y: -0.8897694, z: -0.0486095}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 466296132}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1198617032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198617030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ac07a56faa74804e920a26b8f2ae64b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipAmmunition: {fileID: 2171006346036461463, guid: af3dec190a21ee645915ad1ec0f11b09, type: 3}
+  sceneObjects: {fileID: 258579312}
+  extraAsteroidsPerWave: 0
+  asteroidsSO: {fileID: 11400000, guid: 018a6ca1f7c22e04fb42ced42dce2038, type: 2}
+  canvasTransform: {fileID: 1816309183}
 --- !u!1001 &1578923997
 PrefabInstance:
   m_ObjectHideFlags: 0

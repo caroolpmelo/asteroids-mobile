@@ -70,6 +70,10 @@ namespace Game.Controllers
                     RotateShip();
                 }
             }
+            else
+            {
+                rigidBody.velocity = Vector3.zero;
+            }
         }
 
         private void RotateShip()
