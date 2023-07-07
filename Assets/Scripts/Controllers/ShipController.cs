@@ -20,6 +20,8 @@ namespace Game.Controllers
         private GameObject ammunation;
         private Transform sceneObjectsTransform;
 
+        private const float ammunitionCooldownCounter = 1f;
+
         private void Awake()
         {
             rigidBody = GetComponent<Rigidbody2D>();
@@ -92,7 +94,7 @@ namespace Game.Controllers
 
         private IEnumerator AmmunitionCooldownCoroutine()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(ammunitionCooldownCounter);
         }
     }
 }
