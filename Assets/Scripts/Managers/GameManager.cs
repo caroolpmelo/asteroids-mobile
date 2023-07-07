@@ -24,7 +24,7 @@ namespace Game.Managers
         [SerializeField]
         private Transform canvasTransform;
         public Transform CanvasTransform { get { return canvasTransform; } }
-        
+
         private int asteroidsWave = 0;
 
         private void Start()

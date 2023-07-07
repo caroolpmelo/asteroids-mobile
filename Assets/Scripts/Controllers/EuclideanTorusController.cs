@@ -8,7 +8,7 @@ public class EuclideanTorusController : MonoBehaviour
 
     private void Start()
     {
-        var rectTransform = 
+        var rectTransform =
             GameManager.Instance.CanvasTransform.GetComponent<RectTransform>();
         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(
             new Vector3(rectTransform.rect.width, rectTransform.rect.height));
