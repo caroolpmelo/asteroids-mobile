@@ -87,7 +87,7 @@ namespace Game.Controllers
                 ammo.transform.SetPositionAndRotation(position, transform.rotation);
                 ammo.SetActive(true);
             }
-            
+
             StartCoroutine(AmmunitionCooldownCoroutine());
         }
 

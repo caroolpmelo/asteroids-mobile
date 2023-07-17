@@ -33,7 +33,8 @@ namespace Game.Controllers
                 if (GameManager.Instance.CurrentAsteroidsNum > 1)
                 {
                     GameManager.Instance.CurrentAsteroidsNum--;
-                } else
+                }
+                else
                 {
                     GameManager.Instance.StartNewWave();
                 }
