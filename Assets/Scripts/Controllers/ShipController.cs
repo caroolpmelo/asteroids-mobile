@@ -1,4 +1,4 @@
-using Game.Managers;
+using Game.Common;
 using System.Collections;
 using UnityEngine;
 
@@ -15,11 +15,7 @@ namespace Game.Controllers
         private FixedJoystick joystick;
 
         private float verticalInput = 0f, horizontalInput = 0f;
-
         private Rigidbody2D rigidBody;
-        private GameObject ammunation;
-        private Transform sceneObjectsTransform;
-
         private const float ammunitionCooldownCounter = 1f;
 
         private void Awake()
@@ -29,10 +25,6 @@ namespace Game.Controllers
 
         private void Start()
         {
-            ammunation = GameManager.Instance.ShipAmmunation;
-            sceneObjectsTransform = GameManager.Instance.SceneObjects.transform;
-
-
             rigidBody.gravityScale = 0;
 
             if (shipSpeed == 0)
@@ -81,14 +73,21 @@ namespace Game.Controllers
         private void RotateShip()
         {
             float rotationZ = Mathf.Atan2(verticalInput, horizontalInput) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
+            var _targetRotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, 30f * Time.deltaTime);
         }
 
         public void FireAmmunition()
         {
             var position = new Vector3(transform.position.x, transform.position.y, 0f);
-            var ammo = Instantiate(ammunation, position, transform.rotation, sceneObjectsTransform);
-            // if hit Destroy()
+
+            GameObject ammo = ObjectPool.SharedInstance.GetPooledObject();
+            if (ammo != null)
+            {
+                ammo.transform.SetPositionAndRotation(position, transform.rotation);
+                ammo.SetActive(true);
+            }
+            
             StartCoroutine(AmmunitionCooldownCoroutine());
         }
 
