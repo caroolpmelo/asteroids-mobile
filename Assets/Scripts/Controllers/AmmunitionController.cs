@@ -27,13 +27,17 @@ namespace Game.Controllers
             }
         }
 
-        private void Start()
+        private void OnEnable()
         {
             rigidBody.gravityScale = 0;
-
             rigidBody.AddForce(transform.up * speed);
 
-            Destroy(gameObject, autoDestroyTimer);
+            Invoke(nameof(DeactivateGameObject), autoDestroyTimer);
+        }
+
+        private void DeactivateGameObject()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

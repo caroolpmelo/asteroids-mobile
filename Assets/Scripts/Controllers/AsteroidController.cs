@@ -1,46 +1,44 @@
 using Game.Managers;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class AsteroidController : MonoBehaviour
+namespace Game.Controllers
 {
-    private Rigidbody2D rigidBody;
-    public bool isBig = false;
-
-    private void Awake()
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class AsteroidController : MonoBehaviour
     {
-        rigidBody = GetComponent<Rigidbody2D>();
-    }
+        private Rigidbody2D rigidBody;
 
-    private void Start()
-    {
-        rigidBody.gravityScale = 0;
-
-        rigidBody.AddForce(transform.up * Random.Range(-50.0f, 150.0f));
-        rigidBody.angularVelocity = Random.Range(-0.0f, 90.0f);
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag.Equals("Bullet"))
+        private void Awake()
         {
-            Destroy(other.gameObject); // destroy bullet
-
-            // large asteroid spawn new ones
-            if (tag.Equals("Enemy") && isBig)
-            {
-                Destroy(this);
-                SpawnSmallAsteroids();
-            }
-
-            GameManager.Instance.IncrementScore();
-
-            Destroy(gameObject); // destroy current asteroid
+            rigidBody = GetComponent<Rigidbody2D>();
         }
-    }
 
-    private void SpawnSmallAsteroids()
-    {
-        GameManager.Instance.SpawnSmallerAsteroids(transform.position);
+        private void Start()
+        {
+            rigidBody.gravityScale = 0;
+
+            rigidBody.AddForce(transform.up * Random.Range(-50.0f, 150.0f));
+            rigidBody.angularVelocity = Random.Range(-0.0f, 90.0f);
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision == null) return;
+
+            var isAmmunation = collision.gameObject.GetComponent<AmmunitionController>();
+            if (isAmmunation)
+            {
+                Destroy(gameObject);
+
+                if (GameManager.Instance.CurrentAsteroidsNum > 1)
+                {
+                    GameManager.Instance.CurrentAsteroidsNum--;
+                }
+                else
+                {
+                    GameManager.Instance.StartNewWave();
+                }
+            }
+        }
     }
 }

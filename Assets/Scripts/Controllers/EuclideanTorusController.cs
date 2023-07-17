@@ -1,43 +1,46 @@
 using Game.Managers;
 using UnityEngine;
 
-public class EuclideanTorusController : MonoBehaviour
+namespace Game.Controllers
 {
-    private float width;
-    private float height;
-
-    private void Start()
+    public class EuclideanTorusController : MonoBehaviour
     {
-        var rectTransform = 
-            GameManager.Instance.CanvasTransform.GetComponent<RectTransform>();
-        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(
-            new Vector3(rectTransform.rect.width, rectTransform.rect.height));
-        width = worldPoint.x;
-        height = worldPoint.y;
-    }
+        private float width;
+        private float height;
 
-    private void Update()
-    {
-        CheckBounds();
-    }
+        private void Start()
+        {
+            var rectTransform =
+                GameManager.Instance.CanvasTransform.GetComponent<RectTransform>();
+            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(
+                new Vector3(rectTransform.rect.width, rectTransform.rect.height));
+            width = worldPoint.x;
+            height = worldPoint.y;
+        }
 
-    private void CheckBounds()
-    {
-        if (transform.position.x > width)
+        private void Update()
         {
-            transform.position = new Vector3(-width, transform.position.y);
+            CheckBounds();
         }
-        else if (transform.position.x < -width)
+
+        private void CheckBounds()
         {
-            transform.position = new Vector3(width, transform.position.y);
-        }
-        else if (transform.position.y > height)
-        {
-            transform.position = new Vector3(transform.position.x, -height);
-        }
-        else if (transform.position.y < -height)
-        {
-            transform.position = new Vector3(transform.position.x, height);
+            if (transform.position.x > width)
+            {
+                transform.position = new Vector3(-width, transform.position.y);
+            }
+            else if (transform.position.x < -width)
+            {
+                transform.position = new Vector3(width, transform.position.y);
+            }
+            else if (transform.position.y > height)
+            {
+                transform.position = new Vector3(transform.position.x, -height);
+            }
+            else if (transform.position.y < -height)
+            {
+                transform.position = new Vector3(transform.position.x, height);
+            }
         }
     }
 }
