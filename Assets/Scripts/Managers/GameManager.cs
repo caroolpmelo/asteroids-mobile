@@ -19,12 +19,14 @@ namespace Game.Managers
 
         private int asteroidsWave = 0;
 
+        public int CurrentAsteroidsNum = 0;
+
         private void Start()
         {
             StartNewWave();
         }
 
-        private void StartNewWave()
+        public void StartNewWave()
         {
             asteroidsWave += 1;
 
@@ -34,17 +36,15 @@ namespace Game.Managers
                 extraAsteroidsPerWave = asteroidsWave;
             }
 
-            SpawnAsteroids(asteroidsWave * extraAsteroidsPerWave);
+            CurrentAsteroidsNum = asteroidsWave * extraAsteroidsPerWave;
+            SpawnAsteroids(CurrentAsteroidsNum);
         }
 
         private void SpawnAsteroids(int asteroidsCount)
         {
-            // destroy existing asteroids; hasPlayerLost
             for (int i = 0; i < asteroidsCount; i++)
             {
-                // TODO change size at every wave
                 var randomAsteroidSizeIndex = Random.Range(0, System.Enum.GetValues(typeof(AsteroidsScriptableObject.Size)).Length - 1);
-                // not working
                 var randomAsteroid = asteroidsSO.GetRandomAsteroid(
                     (AsteroidsScriptableObject.Size)System.Enum.GetValues(typeof(AsteroidsScriptableObject.Size)).GetValue(randomAsteroidSizeIndex));
                 var newAsteroid = Instantiate(randomAsteroid,
